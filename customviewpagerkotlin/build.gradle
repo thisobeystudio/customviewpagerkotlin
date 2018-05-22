@@ -1,0 +1,98 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'com.jfrog.bintray'
+
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+ext {
+    support_lib_version = '27.1.1'
+    support_constraint_version = '1.1.0'
+    kotlin_version = '1.2.41'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$support_lib_version"
+    implementation "com.android.support:recyclerview-v7:$support_lib_version"
+    implementation "com.android.support.constraint:constraint-layout:$support_constraint_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = 'com.thisobeystudio.customviewpager'
+version = '0.0.1-beta'
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+artifacts {
+    archives generateSourcesJar
+}
+
+// Create a variable called localPropertiesFile, and initialize it to your
+// local.properties file, in the rootProject folder.
+def localPropertiesFile = rootProject.file("local.properties")
+
+// Initialize a new Properties() object called localProperties.
+def localProperties = new Properties()
+
+// Load the local.properties file into the localProperties object.
+localProperties.load(new FileInputStream(localPropertiesFile))
+
+bintray {
+
+    user = localProperties['user']
+    key = localProperties['apiKey']
+    publish = true
+
+    pkg {
+        repo = 'maven'
+        name = 'custom-viewpager-kotlin'
+
+        version {
+            name = version
+            desc = "Release: ${version}"
+            vcsTag = version
+            released = new Date()
+        }
+
+        websiteUrl = 'https://github.com/thisobeystudio/customviewpagerkotlin'
+        issueTrackerUrl = 'https://github.com/thisobeystudio/customviewpagerkotlin/issues'
+        vcsUrl = 'https://github.com/thisobeystudio/customviewpagerkotlin.git'
+        licenses = ['Apache-2.0']
+    }
+
+    configurations = ['archives']
+}

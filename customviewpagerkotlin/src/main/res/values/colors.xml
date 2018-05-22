@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="indicatorNormal">#ffffff</color>
+    <color name="indicatorPressed">#ffffff</color>
+    <color name="indicatorSelected">#ffffff</color>
+</resources>

@@ -15,7 +15,7 @@ A Custom `ViewPager` Library for `Android` written in [Kotlin][kt]. There is als
 
 #### Gradle:
 ```groovy
-implementation 'com.thisobeystudio.customviewpager:customviewpager:0.0.1-beta'
+implementation 'com.thisobeystudio.customviewpager:customviewpagerkotlin:0.0.1-beta'
 ```
 
 ## Implementation into an existing project:

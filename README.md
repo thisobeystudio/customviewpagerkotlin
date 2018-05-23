@@ -30,6 +30,9 @@ implementation 'com.thisobeystudio.customviewpager:customviewpagerkotlin:0.0.1-b
 4. Optional, init indicators as follows `ViewPager.initIndicators()`
 5. Optional, `Fragment` must extend `CustomFragment` when using complex views to share data between first and last helper pages.
 
+## Demos:
+[Demos][demos]
+
 ## Indicators Features:
 * Notice! Indicators requires a `ConstraintLayout` as `CustomViewPager` parent.
 
@@ -43,6 +46,13 @@ implementation 'com.thisobeystudio.customviewpager:customviewpagerkotlin:0.0.1-b
     - Height Adjust Modes. (x3)
     - Max items per row.
     - Colors and/or Drawable.
+
+#### Initialization:
+```kotlin
+customViewPager.initIndicators() // default -> (POSITION_FLOAT_BOTTOM, MODE_CLAMPED_HEIGHT, 1)
+customViewPager.initIndicators(position: Int, adjustMode: Int)
+customViewPager.initIndicators(position: Int, adjustMode: Int, maxRows: Int)
+```
 
 #### Position:
 ```kotlin
@@ -106,3 +116,4 @@ If you want to add new functionality, please file a new proposal issue first to 
 
  [kt]: https://kotlinlang.org/
  [jv]: https://github.com/thisobeystudio.customviewpager
+ [demos]: https://github.com/endikaaguilera/customviewpagerkotlindemos

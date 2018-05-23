@@ -25,7 +25,7 @@ implementation 'com.thisobeystudio.customviewpager:customviewpagerkotlin:0.0.1-b
     - Must extends to `CustomPagerAdapter`
     - Replace `getItem(Int)` to `getItem(CustomIndexHelper)`
     - Use `CustomIndexHelper.dataPosition` for data indexing, do NOT use `CustomIndexHelper.pagerPosition`
-    - Replace `getCount()` to `getItem(getRealCount)`, do NOT use `getCount()`
+    - Replace `getCount()` to `getRealCount()`, do NOT use `getCount()`
 3. See [Customization](#customization) for more options
 4. Optional, init indicators as follows `ViewPager.initIndicators()`
 5. Optional, `Fragment` must extend `CustomFragment` when using complex views to share data between first and last helper pages.
